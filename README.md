@@ -1,8 +1,8 @@
 # Active Directory Homelab Project
 
-![Active Directory Homelab](https://imgur.com/xRb47Vs)
+![Active Directory Homelab](https://imgur.com/xRb47Vs.png)
 <br><br>
-![Active Directory Homelab2](https://imgur.com/lQUzS2f)
+![Active Directory Homelab2](https://imgur.com/lQUzS2f.png)
 
 
 ## Introduction
