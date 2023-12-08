@@ -2,7 +2,7 @@
 
 ![Active Directory Homelab](https://imgur.com/xRb47Vs.png)
 <br><br>
-![Active Directory Homelab2](https://imgur.com/lQUzS2f.png)
+![Active Directory Homelab2](https://imgur.com/SvRA6IZ)
 
 
 ## Introduction
