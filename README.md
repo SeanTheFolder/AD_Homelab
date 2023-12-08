@@ -2,7 +2,7 @@
 
 ![Active Directory Homelab](https://imgur.com/xRb47Vs.png)
 <br><br>
-![Active Directory Homelab2](https://imgur.com/SvRA6IZ)
+![Active Directory Homelab2](https://imgur.com/SvRA6IZ.png)
 
 
 ## Introduction
@@ -36,7 +36,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   <br> <br>
   In this section, We'll be configuring the 2 NICs on the Windows Server 2019.<br><br>
   
-  ![Image 1](https://imgur.com/26golky)
+  ![Image 1](https://imgur.com/26golky.png)
   <br><br>
   
   **Step 1: Access Network Settings:**
@@ -78,7 +78,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Check "Active Directory Domain Services" and proceed.
   - Click through until you reach the installation summary, then click "Install."<br><br>
 
-  ![Image 2](https://imgur.com/39ki8G9)
+  ![Image 2](https://imgur.com/39ki8G9.png)
 <br><br>
   
   **Step 2: Promote Server to Domain Controller:**
@@ -91,7 +91,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - DNS can be left alone for automatic configuration.
   - Complete the wizard and let the server restart.<br><br>
   
-  ![Image 3](https://imgur.com/DA3mDpJ)
+  ![Image 3](https://imgur.com/DA3mDpJ.png)
 <br><br>
   
   Awesome! We've successfully installed and configured Active Directory Domain Services on our Windows Server 2019.
@@ -103,7 +103,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   
   Here, we'll be exploring how to efficiently manage users by creating Organizational Units (OUs), adding users, and assigning administrative privileges.<br><br>
   
-  ![Image 4](https://imgur.com/C2KXlzu)
+  ![Image 4](https://imgur.com/C2KXlzu.png)
 <br><br>
   
   **Step 1: Create Organizational Units (OUs):**
@@ -111,7 +111,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Right-click on the domain name and choose "New" > "Organizational Unit"
   - Create 2 OUs and name them: "_ADMINS" and "_USERS" respectively<br><br>
 
-  ![Image 5](https://imgur.com/BUPc2LW)
+  ![Image 5](https://imgur.com/BUPc2LW.png)
 <br><br>
   
   **Step 2: Create User Account:**
@@ -121,7 +121,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
     - Last Name: Huynh
     - User Logon Name: thuynh<br><br>
       
-  ![Image 6](https://imgur.com/61gZxmI)
+  ![Image 6](https://imgur.com/61gZxmI.png)
 <br><br>
 
   **Step 3: Add User to Domain Admins Group:**
@@ -131,14 +131,14 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Enter "Domain Admins" and click "Check Names"
   - Click "OK" to add the user to the "Domain Admins" group<br><br>
   
-  ![Image 7](https://imgur.com/Ax1ZDAK)<br><br>
+  ![Image 7](https://imgur.com/Ax1ZDAK.png)<br><br>
   
-  ![Image 8](https://imgur.com/7RiSghL)<br><br>
+  ![Image 8](https://imgur.com/7RiSghL.png)<br><br>
   
   **Step 4: Verify User and OU Creation:**
   - Refresh Active Directory by restarting and log in with new Admin User credentials to confirm User and OU Creation<br><br>
   
-  ![Image 9](https://imgur.com/gKsTCnH)
+  ![Image 9](https://imgur.com/gKsTCnH.png)
 <br><br>
   
   Yay! we've successfully created Organizational Units (OUs), added a user to the "_ADMINS" OU, and granted administrative privileges by adding our user to the "Domain Admins" group.
@@ -153,7 +153,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   **Step 1: Open Server Manager:**
   - Launch "Server Manager" on the Windows Server 2019.<br><br>
   
-  ![Image 10](https://imgur.com/0gnHAEO)<br><br>
+  ![Image 10](https://imgur.com/0gnHAEO.png)<br><br>
   
   **Step 2: Add DHCP Role:**
   - Click "Manage" > "Add Roles and Features"
@@ -161,14 +161,14 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Choose the local server(DC) and proceed
   - Check "DHCP Server" and complete the installation wizard<br><br>
   
-  ![Image 11](https://imgur.com/gyxEvbh)<br><br>
+  ![Image 11](https://imgur.com/gyxEvbh.png)<br><br>
 
   **Step 3: Configure DHCP:**
   - After installation, open "DHCP Manager" from "Administrative Tools"
   - Right-click on our server name and choose "Configure DHCP"
   - Follow the wizard, selecting the appropriate network connection<br><br>
   
-  ![Image 12](https://imgur.com/gywjWZx)<br><br>
+  ![Image 12](https://imgur.com/gywjWZx.png)<br><br>
   
   **Step 4: Create DHCP Scope:**
   - In "DHCP Manager," right-click on "IPv4" and choose "New Scope"
@@ -182,7 +182,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
     - DNS: 127.0.0.1
     - Lease Duration: 8 days<br><br>
   
-  ![Image 13](https://imgur.com/iVIEVWB)<br><br>
+  ![Image 13](https://imgur.com/iVIEVWB.png)<br><br>
 
   **Step 5: Authorize DHCP Server:**
   - If needed, we'll right-click on the server name in "DHCP Manager" and choose "Authorize."<br><br>
@@ -196,7 +196,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   
   In this section, we'll focus on installing and configuring Network Address Translation (NAT), a technique that enables devices within our internal network to access the external internet while using a single public IP address.<br><br>
   
-  ![Image 14](https://imgur.com/Oa6kp5s)<br><br>
+  ![Image 14](https://imgur.com/Oa6kp5s.png)<br><br>
 
   **Step 1: Open Server Manager:**
   - Launch "Server Manager" on the Windows Server 2019
@@ -206,20 +206,20 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Check "Remote Access" and continue
   - Check "Routing" and finish the installation wizard<br><br>
 
-  ![Image 15](https://imgur.com/Oa6kp5s)<br><br>
+  ![Image 15](https://imgur.com/Oa6kp5s.png)<br><br>
 
-  ![Image 16](https://imgur.com/rNGB3WV)<br><br>
+  ![Image 16](https://imgur.com/rNGB3WV.png)<br><br>
   
   **Step 2: Configure NAT:**
   - After installation, open "Routing and Remote Access" from "Administrative Tools"
   - Right-click on our server name and choose "Configure and Enable Routing and Remote Access"<br><br>
 
-  ![Image 17](https://imgur.com/NQAUkyv)<br><br>
+  ![Image 17](https://imgur.com/NQAUkyv.png)<br><br>
   
   - Follow the wizard, selecting "Network address translation (NAT)"
   - Select the external network interface (Internet) for public connection<br><br>
   
-  ![Image 18](https://imgur.com/Mh9doOi)<br><br>
+  ![Image 18](https://imgur.com/Mh9doOi.png)<br><br>
 
   - In the "NAT" section, right-click on the server name and choose "NAT" > "Enable"<br><br>
 </details>
@@ -232,29 +232,29 @@ Collectively, these tools, technologies, and architectural elements come togethe
 
   Here, we will run the Windows 10 VM, join the domain (Streetrack.com),  and test connectivity <br><br>
   
-  ![Image 19](https://imgur.com/lcImO2S)<br><br>
+  ![Image 19](https://imgur.com/lcImO2S.png)<br><br>
   
   - On the client VM (Windows 10), log in using the Domain Admin "thuynh"
   - Right-click the "Start Menu" and choose "System"<br><br>
 
-  ![Image 20](https://imgur.com/pGZ5x75)<br><br>
+  ![Image 20](https://imgur.com/pGZ5x75.png)<br><br>
   
   - Click on "Advanced system settings"<br><br>
 
-  ![Image 21](https://imgur.com/7rzw6kp)<br><br>
+  ![Image 21](https://imgur.com/7rzw6kp.png)<br><br>
     
   - Go to the "Computer Name" tab and click "Change"<br><br>
   
-  ![Image 22](https://imgur.com/X43Es8o)<br><br>
+  ![Image 22](https://imgur.com/X43Es8o.png)<br><br>
   
   - Change "Computer name" to "Client-1"
   - Choose "Domain" and enter our domain name "Streetrack.com"<br><br>
   
-  ![Image 23](https://imgur.com/Lvz3umt)<br><br>
+  ![Image 23](https://imgur.com/Lvz3umt.png)<br><br>
   
   - Provide the "thuynh" credentials to join the domain<br><br>
   
-  ![Image 24](https://imgur.com/iQ7g3Qq)<br><br>
+  ![Image 24](https://imgur.com/iQ7g3Qq.png)<br><br>
 
   - Let's go! We've joined the Domain!<br><br>
 </details>
@@ -272,7 +272,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
     - Run `ipconfig` to check the assigned IP configuration
     - Run `ping www.google.com` to test internet connectivity<br><br>
   
-  ![Image 25](https://imgur.com/RIZLy7m)<br><br>
+  ![Image 25](https://imgur.com/RIZLy7m.png)<br><br>
   
   There we go! We've successfully configured Network Address Translation (NAT), joined the domain using "thuynh" credentials, and verified internet and internal network connectivity on the client VM.
 </details>
@@ -288,7 +288,7 @@ Collectively, these tools, technologies, and architectural elements come togethe
   My_users_list.txt 
    - A list of over 100 names(first and last)<br><br>
   
-  ![Image 26](https://imgur.com/aLUjJuU)<br><br>
+  ![Image 26](https://imgur.com/aLUjJuU.png)<br><br>
 
   <details>
   <summary>Create_AD_Users.py <b>(CLICK HERE TO VIEW)</b></summary>
@@ -342,12 +342,12 @@ for line in lines:
    - Users will be placed in the "_USERS" OU in "Streetrack.com" Domain
    - Default password will be set to "Cyberlab123!"<br><br>
   
-  ![Image 27](https://imgur.com/yhi5Xg3)<br><br>
+  ![Image 27](https://imgur.com/yhi5Xg3.png)<br><br>
   
   **Step 1: Download and Install Python:**
   - Download Python from website, right-click install file and choose "Run as Administrator"<br><br>
   
-  ![Image 28](https://imgur.com/NDIZVk0)<br><br>
+  ![Image 28](https://imgur.com/NDIZVk0.png)<br><br>
   
   **Step 2: Install Required Dependencies:**
   - Open a Command Prompt as administrators<br><br>
@@ -360,18 +360,18 @@ for line in lines:
     pip install pywin32
     ```
 
-  ![Image 29](https://imgur.com/STUieIi)<br><br>
+  ![Image 29](https://imgur.com/STUieIi.png)<br><br>
   
-  ![Image 30](https://imgur.com/wEWSD5y)<br><br>
+  ![Image 30](https://imgur.com/wEWSD5y.png)<br><br>
   
-  ![Image 31](https://imgur.com/j2OhIii)<br><br>
+  ![Image 31](https://imgur.com/j2OhIii.png)<br><br>
   
   **Step 3: Navigate to Script Directory:**
   - Navigate to the directory where the Python script and user list text file resides<br><br>
 
-  ![Image 32](https://imgur.com/Hdv5pHr)<br><br>
+  ![Image 32](https://imgur.com/Hdv5pHr.png)<br><br>
   
-  ![Image 33](https://imgur.com/mMDIbzp)<br><br>
+  ![Image 33](https://imgur.com/mMDIbzp.png)<br><br>
   
   **Step 4: Run the Python Script:**
   - In the Command Prompt, run the script using the command:
@@ -380,17 +380,17 @@ for line in lines:
     ```
   <br><br>
   
-  ![Image 34](https://imgur.com/ODoDFJN)<br><br>
+  ![Image 34](https://imgur.com/ODoDFJN.png)<br><br>
   
   **Step 5: Verify User Creations:**
   - In Active Directory Users and Computers, navigate to the "_USERS" OU to verify that the users created by the scripts are listed<br><br>
   
-  ![Image 35](https://imgur.com/xhdxRrN)<br><br>
+  ![Image 35](https://imgur.com/xhdxRrN.png)<br><br>
   
   **Step 6: Test User Accounts:**
   - Log into one of the created user accounts to confirm its functionality and attributes<br><br>
   
-  ![Image 36](https://imgur.com/5BZGShs)<br><br>
+  ![Image 36](https://imgur.com/5BZGShs.png)<br><br>
   
   Let's go!! We now have created and ran the Python script to automate user creations in Active Directory, streamlining the process and enhancing efficiency!
 </details>
