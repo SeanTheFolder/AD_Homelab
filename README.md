@@ -228,9 +228,9 @@ Collectively, these tools, technologies, and architectural elements come togethe
   <summary><h2><b>Section 6: Join the Domain </b></h2></summary>
   <br><br>
   
-  **Step 3: Join Domain With Windows 10 VM:**<br><br>
+  **Step 1: Join Domain With Windows 10 VM:**<br><br>
 
-  Here, we will run the Windows 10 VM, join the domain (Streetrack.com),  and test connectivity <br><br>
+  Here, we will run the Windows 10 VM, and join the domain (Streetrack.com) <br><br>
   
   ![Image 19](https://imgur.com/lcImO2S.png)<br><br>
   
@@ -238,11 +238,13 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Right-click the "Start Menu" and choose "System"<br><br>
 
   ![Image 20](https://imgur.com/pGZ5x75.png)<br><br>
-  
+
+  **Step 2: Open Advanced System Settings:**<br><br>
   - Click on "Advanced system settings"<br><br>
 
   ![Image 21](https://imgur.com/7rzw6kp.png)<br><br>
-    
+
+  **Step 3: Change Computer Name:**<br><br>
   - Go to the "Computer Name" tab and click "Change"<br><br>
   
   ![Image 22](https://imgur.com/X43Es8o.png)<br><br>
@@ -251,21 +253,22 @@ Collectively, these tools, technologies, and architectural elements come togethe
   - Choose "Domain" and enter our domain name "Streetrack.com"<br><br>
   
   ![Image 23](https://imgur.com/Lvz3umt.png)<br><br>
-  
+
+  **Step 4: Input Credentials:**<br><br>
   - Provide the "thuynh" credentials to join the domain<br><br>
   
   ![Image 24](https://imgur.com/iQ7g3Qq.png)<br><br>
 
-  - Let's go! We've joined the Domain!<br><br>
+  - Success! We've joined the Domain!<br><br>
 </details>
 
 <details>
   <summary><h2><b>Section 7: Test the LAN/WAN Connectivity </b></h2></summary>
   <br><br>
 
-  Now, we will test and confirm the confgurations that we set, ensuring the proper DHCP assignments and being able to connect to the internet.
+  Now, we will test and confirm the confgurations that we set, ensuring the proper DHCP assignments and ability to connect to the internet.
   
-  **Step 4: Test Connectivity:**<br><br>
+  **Step 1: Test Connectivity:**<br><br>
 
   - On the Windows 10 VM, open a Command Prompt
   - Use the following commands to verify network settings and connectivity:
@@ -294,53 +297,51 @@ Collectively, these tools, technologies, and architectural elements come togethe
   <summary>Create_AD_Users.py <b>(CLICK HERE TO VIEW)</b></summary>
   
   ```python
-# This will import everything from the pyad module
 from pyad import *
 
-# Here, we'llset the default connection parameters for the Active Directory server
-pyad.set_defaults(ldap_server="10.2.22.1", username="thuynh@streetrack.com", password="Cyberlab123!")
+# Set connection parameters for the AD server
+pyad.set_defaults(ldap_server="10.2.22.1", username="thuynh@streetrack.com", password="Password1")
 
-# This line will create a container object for the "_USERS" Organizational Unit (OU)
+# Create container object for "_USERS" Organizational Unit (OU)
 ou = pyad.adcontainer.ADContainer.from_dn("OU=_USERS,DC=Streetrack,DC=com")
 
-# This will open the my_users_list text file and read its lines into the 'lines' variable
+# Open my_users_list, input lines into 'lines' variable
 with open('my_users_list.txt', 'r') as file:
-    lines = file.readlines()
+  lines = file.readlines()
 
-# Iterate through each line in the 'lines' list
 for line in lines:
-    # Here, we split the line into 'first_name' and 'last_name'
-    first_name, last_name = line.strip().split()
-    
-    # Create a username by capitalizing the first letter of 'first_name' and making 'last_name' lowercase
-    username = first_name[0].upper() + last_name.lower()
-    
-    try:
-        # This line will create the Active Directory user with the 'username' and 'ou' specified
-        user = pyad.aduser.ADUser.create(username, ou)
-        
-        # These updates will give the various attributes of the user
-        user.update_attribute('displayName', f"{first_name} {last_name}")
-        user.update_attribute('sAMAccountName', username)
-        user.update_attribute('givenName', first_name)
-        user.update_attribute('sn', last_name)
-        
-        # And now, the user's password
-        password = "Cyberlab123!"
-        user.set_password(password)
-        
-        # This line will print a success message
-        print(f"User {username} created successfully.")
-        
-    except Exception as e:
-        # This will print an error message if an exception occurs and will help with error handling. 
-        print(f"Error creating user {username}: {str(e)}")
+  # Here, we split the line into 'first_name' and 'last_name'
+  first_name, last_name = line.strip().split()
+  
+  # Create a username: Capitalize first letter of 'first_name' and make 'last_name' lowercase
+  username = first_name[0].upper() + last_name.lower()
+  
+  try:
+      # Create AD user 'username' and 'ou'
+      user = pyad.aduser.ADUser.create(username, ou)
+      
+      # Give attributes to user
+      user.update_attribute('displayName', f"{first_name} {last_name}")
+      user.update_attribute('sAMAccountName', username)
+      user.update_attribute('givenName', first_name)
+      user.update_attribute('sn', last_name)
+      
+      # Generate Generic Password
+      password = "Password1"
+      user.set_password(password)
+      
+      # Print success message
+      print(f"User {username} created successfully.")
+      
+  except Exception as e:
+      # Print error message if an exception occurs. 
+      print(f"Error creating user {username}: {str(e)}")
 ```
   </details>
   
    - A Python script to create Users from the My_users_list.txt file
    - Users will be placed in the "_USERS" OU in "Streetrack.com" Domain
-   - Default password will be set to "Cyberlab123!"<br><br>
+   - Default password will be set to "Password1"<br><br>
   
   ![Image 27](https://imgur.com/yhi5Xg3.png)<br><br>
   
